@@ -1,0 +1,31 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <h2>Comment pourrais-je vous aider...</h2>
+  </div>
+  <div class="chat-box" id="chat-box">
+    <div *ngFor="let item of data; let i = index" class="chat-message">
+      <div class="message user-message">
+        <p>{{ item.message }}</p>
+      </div>
+      <div class="message bot-message">
+        <p>{{ item.response }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="chat-input-container">
+    <input
+      type="text"
+      placeholder="Type your message..."
+      [(ngModel)]="message"
+      class="chat-input"
+    />
+
+    <button class="send-button" (click)="sendMessage()">
+      <span>Envoyer</span>
+      <i class="zmdi zmdi-mail-send"></i>
+    </button>
+
+
+
+  </div>
+</div>

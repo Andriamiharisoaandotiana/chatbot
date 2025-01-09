@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { ExampleComponent } from './app/example/example.component';
+import { ApiService } from './app/api.service';
 
-bootstrapApplication(AppComponent, appConfig)
+bootstrapApplication(ExampleComponent, {providers: [ApiService]})
   .catch((err) => console.error(err));
