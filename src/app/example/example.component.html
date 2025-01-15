@@ -1,12 +1,12 @@
-<div class="chat-container flex flex-col h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500">
+<div class="chat-container flex flex-col h-screen bg-slate-200 from-indigo-500 via-purple-500 to-blue-500" >
   <!-- Chat Header -->
   <div class="chat-header bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 shadow-lg">
     <h2 class="text-lg font-bold">Comment puis-je vous aider ?</h2>
   </div>
 
   <!-- Chat Box -->
-  <div class="chat-box flex-1 overflow-y-auto p-6 space-y-4">
-    <div *ngFor="let item of data; let i = index" class="chat-message">
+  <div class="chat-box flex-1 overflow-y-auto p-6 space-y-4" #chatContainer>
+    <div *ngFor="let item of data; let i = index" class="chat-message" [class.user]="item.sender === 'user'">
       <!-- User Message -->
       <div class="message user-message bg-gradient-to-r from-blue-500 to-purple-500 text-white p-4 rounded-3xl shadow-lg max-w-md ml-auto">
         <p class="text-sm">{{ item.message }}</p>
@@ -25,6 +25,7 @@
       placeholder="Écrivez votre message ici..."
       [(ngModel)]="message"
       class="chat-input flex-1 p-3 border-2 border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+      (keyup.enter)="sendMessage()" 
     />
     <!-- Spinner -->
     <div *ngIf="isLoading" class="spinner-container ml-4">

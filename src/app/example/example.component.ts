@@ -1,4 +1,11 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  NgModule,
+  ViewChild,
+  ElementRef,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { ApiService } from '../api.service'; // Assurez-vous que ce service est correct
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,8 +29,9 @@ export class ExampleComponent implements OnInit {
   message: string = '';
   isLoading: boolean = false; // Indicateur de chargement
   chatbotResponse: string = ''; // Réponse du chatbot
+  @ViewChild('chatContainer', { static: false }) chatContainer!: ElementRef;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.apiService
@@ -47,6 +55,9 @@ export class ExampleComponent implements OnInit {
         .then((response) => {
           console.log('Message envoyé avec succès:', response);
           this.message = ''; // Réinitialiser l'input après envoi
+          // Met à jour le DOM avant de scroller
+          this.cdr.detectChanges();
+          setTimeout(() => this.scrollToBottom(), 0);
 
           this.apiService
             .getData('/chat')
@@ -76,5 +87,13 @@ export class ExampleComponent implements OnInit {
       this.chatbotResponse = 'Voici la réponse du chatbot.';
       this.isLoading = false; // Arrêter le chargement
     }, 2000); // Simule une latence de 2 secondes
+  }
+  scrollToBottom() {
+    try {
+      this.chatContainer.nativeElement.scrollTop =
+        this.chatContainer.nativeElement.scrollHeight;
+    } catch (err) {
+      console.error('Erreur lors du scroll :', err);
+    }
   }
 }
