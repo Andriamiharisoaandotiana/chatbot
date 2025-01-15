@@ -1,31 +1,42 @@
-<div class="chat-container">
-  <div class="chat-header">
-    <h2>Comment pourrais-je vous aider...</h2>
+<div class="chat-container flex flex-col h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500">
+  <!-- Chat Header -->
+  <div class="chat-header bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 shadow-lg">
+    <h2 class="text-lg font-bold">Comment puis-je vous aider ?</h2>
   </div>
-  <div class="chat-box" id="chat-box">
+
+  <!-- Chat Box -->
+  <div class="chat-box flex-1 overflow-y-auto p-6 space-y-4">
     <div *ngFor="let item of data; let i = index" class="chat-message">
-      <div class="message user-message">
-        <p>{{ item.message }}</p>
+      <!-- User Message -->
+      <div class="message user-message bg-gradient-to-r from-blue-500 to-purple-500 text-white p-4 rounded-3xl shadow-lg max-w-md ml-auto">
+        <p class="text-sm">{{ item.message }}</p>
       </div>
-      <div class="message bot-message">
-        <p>{{ item.response }}</p>
+      <!-- Bot Message -->
+      <div class="message bot-message bg-gray-100 text-gray-800 p-4 rounded-3xl shadow-lg max-w-md">
+        <p class="text-sm">{{ item.response }}</p>
       </div>
     </div>
   </div>
-  <div class="chat-input-container">
+
+  <!-- Chat Input -->
+  <div class="chat-input-container bg-white flex items-center p-4 border-t shadow-md">
     <input
       type="text"
-      placeholder="Type your message..."
+      placeholder="Écrivez votre message ici..."
       [(ngModel)]="message"
-      class="chat-input"
+      class="chat-input flex-1 p-3 border-2 border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
     />
-
-    <button class="send-button" (click)="sendMessage()">
-      <span>Envoyer</span>
-      <i class="zmdi zmdi-mail-send"></i>
+    <!-- Spinner -->
+    <div *ngIf="isLoading" class="spinner-container ml-4">
+      <div class="spinner border-4 border-indigo-500 border-t-transparent rounded-full w-6 h-6 animate-spin"></div>
+    </div>
+    <!-- Send Button -->
+    <button
+      class="send-button ml-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:from-blue-700 hover:to-purple-700 flex items-center transition"
+      (click)="sendMessage(); generateResponse()"
+    >
+      <span>Send</span>
+      <i class="ml-2 zmdi zmdi-mail-send"></i>
     </button>
-
-
-
   </div>
 </div>

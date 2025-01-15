@@ -25,7 +25,7 @@ export class ApiService {
         return response.data;
       })
       .catch((error) => {
-        console.error('Erreur lors de la récupération des données', error);
+        console.error('Erreur lors de la récupération des données get ', error);
         throw error;
       });
   }
@@ -38,7 +38,7 @@ export class ApiService {
         return response.data;
       })
       .catch((error) => {
-        console.error('Erreur lors de la récupération des données', error);
+        console.error('Erreur lors de la récupération des données post', error);
         throw error;
       });
   }
