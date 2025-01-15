@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-example',
   standalone: true,
@@ -29,6 +30,7 @@ export class ExampleComponent implements OnInit {
   message: string = '';
   isLoading: boolean = false; // Indicateur de chargement
   chatbotResponse: string = ''; // Réponse du chatbot
+  faMicrophone = faMicrophone;
   @ViewChild('chatContainer', { static: false }) chatContainer!: ElementRef;
 
   constructor(private apiService: ApiService, private cdr: ChangeDetectorRef) {}
@@ -95,5 +97,9 @@ export class ExampleComponent implements OnInit {
     } catch (err) {
       console.error('Erreur lors du scroll :', err);
     }
+  }
+  onMicrophoneClick(): void {
+    console.log('Microphone icon clicked!');
+    // Ajoutez votre logique ici
   }
 }

@@ -98,5 +98,8 @@
   "cli": {
     "analytics": "d379313b-02ac-4881-9a79-e8d2b78f6cc9"
   },
-  "styles": ["src/styles.css"]
+  "styles": [
+    "src/styles.scss",
+    "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+  ]
 }

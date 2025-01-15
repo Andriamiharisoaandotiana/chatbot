@@ -4,6 +4,7 @@ import { ExampleComponent } from './example/example.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-root',
