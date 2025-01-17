@@ -5,7 +5,7 @@
   </div>
 
   <!-- Chat Box -->
-  <div class="chat-box flex-1 overflow-y-auto p-6 space-y-4" #chatContainer>
+  <div class="chat-box flex-1 overflow-y-auto p-6 space-y-4 h-96" #chatContainer>
     <div *ngFor="let item of data; let i = index" class="chat-message" [class.user]="item.sender === 'user'">
       <!-- User Message -->
       <div class="message user-message bg-gradient-to-r from-blue-500 to-purple-500 text-white p-4 rounded-3xl shadow-lg max-w-md ml-auto">
@@ -37,20 +37,25 @@
       class="send-button ml-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:from-blue-700 hover:to-purple-700 flex items-center transition"
       (click)="sendMessage(); generateResponse()"
     >
-      <span>Send</span>
+      <span>Envoyer</span>
       <i class="ml-2 zmdi zmdi-mail-send"></i>
       
     </button>
+    <div class="text-blue-500">
+      <i class="fas fa-check"></i>
+    </div>
+
   
-    <!-- <button
+    <button
       class="send-button ml-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:from-blue-700 hover:to-purple-700 flex items-center transition"
       (click)="onMicrophoneClick()"
     >
-    <i class="fa-solid fa-phone w-6 h-6"></i>
+    <i class="fas-solid fa-microphone text-lg w-6 h-6"></i>
     <i class="fas fa-camera"></i> 
+
     </button>  
 
-    <div class="flex items-center space-x-3">
+    <!--<div class="flex items-center space-x-3">
       <!-- Bouton avec icône Microphone 
       <button type="button" class="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition">
         <svg xmlns="img/microphone-solid.svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
