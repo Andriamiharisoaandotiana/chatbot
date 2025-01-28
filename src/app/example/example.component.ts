@@ -115,6 +115,7 @@ export class ExampleComponent implements OnInit, AfterViewChecked {
    */
   onMicrophoneClick(): void {
     console.log('Microphone icon clicked!');
+    alert('ATAOVY  NY VOCAL MALAKY FA TSY EO MIDORORORORO EO');
     // Ajoutez votre logique ici
   }
 }
