@@ -5,10 +5,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
   imports: [
+    // LoginComponent,
     ExampleComponent,
     MatProgressSpinnerModule,
     MatSlideToggleModule,

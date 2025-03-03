@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,12 +8,24 @@ import { Component } from '@angular/core';
 })
 export class NavBarComponent {
   menuActive = false;
+  isDropdownOpen = false;
+  isMobileMenuOpen = false;
 
-  toggleMenu() {
-    this.menuActive = !this.menuActive;
-    const navbarLinks = document.querySelector('.navbar-links');
-    if (navbarLinks) {
-      navbarLinks.classList.toggle('active', this.menuActive);
+  toggleDropdown(event: Event) {
+    event.stopPropagation(); // Empêche l'événement de remonter au `document`
+    this.isDropdownOpen = !this.isDropdownOpen;
+    console.log('Dropdown toggled: ', this.isDropdownOpen);
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  closeDropdown(event: Event) {
+    const targetElement = event.target as HTMLElement;
+    if (!targetElement.closest('.dropdown-container')) {
+      this.isDropdownOpen = false;
     }
   }
 }
