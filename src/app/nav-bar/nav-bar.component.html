@@ -4,40 +4,28 @@
       
       <!-- Logo -->
       <div class="flex items-center">
-        <img class="h-10 w-auto" src="img/unnamed.jpg" alt="Logo">
+        <img class="h-10 w-auto" src="/img/unnamed.jpg" alt="Logo">
       </div>
 
       <!-- Desktop Menu -->
       <div class="hidden sm:flex space-x-6">
-        <p class="text-white font-medium hover:text-gray-300 transition">Ministère de l'Economie et des Finances</p>
+        <p class="text-white font-medium hover:text-gray-300 transition">
+          Ministère de l'Economie et des Finances
+        </p>
       </div>
 
       <!-- Right Section -->
       <div class="flex items-center space-x-4">
         
         <!-- Notifications Button -->
-        <button class="relative text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 p-2 rounded-full">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-          </svg>
+        <button (click)="toggleDarkMode()" class="p-2 rounded-md text-gray-400 dark:text-gray-300 hover:text-white text-2xl">
+          <fa-icon [icon]="isDarkMode ? faMoon : faSun"></fa-icon>
         </button>
 
-        <!-- Debug: Affiche la valeur actuelle -->
-<p class="text-white">{{ isDropdownOpen }}</p>
-
-<!-- Profile Dropdown -->
-<div class="relative dropdown-container">
-  <button (click)="toggleDropdown($event)" class="flex items-center space-x-2 text-white focus:outline-none">
-    <img class="w-8 h-8 rounded-full" src="img/img.jpg" alt="User">
-  </button>
-
-  <!-- Dropdown -->
-  <div *NgIf="isDropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black/5 py-1">
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Your Profile</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Settings</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sign out</a>
-  </div>
-</div>
+        <!-- Profile dropdown -->
+        <button *ngIf="isConnected" (click)="logout()" type="button" class="send-button ml-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:from-blue-700 hover:to-purple-700 flex items-center transition">
+          Deconnexion
+        </button>
 
       </div>
 
@@ -52,7 +40,7 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div *NgIf="isMobileMenuOpen" class="sm:hidden bg-gray-800">
+  <div *ngIf="isMobileMenuOpen" class="sm:hidden bg-gray-800">
     <div class="space-y-2 px-4 py-3">
       <a href="#" class="block text-white hover:text-gray-300">Dashboard</a>
       <a href="#" class="block text-gray-300 hover:text-white">Team</a>
@@ -60,3 +48,6 @@
     </div>
   </div>
 </nav>
+
+
+

@@ -1,32 +1,32 @@
-// import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class AuthService {
-//   private apiUrl = 'http://localhost:8080/api/auth/login'; // URL du backend
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  private apiUrl = 'http://localhost:8080/api/auth/login'; // URL du backend
 
-//   constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-//   login(credentials: { email: string; password: string }): Observable<any> {
-//     return this.http.post<any>(this.apiUrl, credentials);
-//   }
+  login(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post<any>(this.apiUrl, credentials);
+  }
 
-//   saveToken(token: string): void {
-//     localStorage.setItem('jwtToken', token);
-//   }
+  saveToken(token: string): void {
+    localStorage.setItem('jwtToken', token);
+  }
 
-//   getToken(): string | null {
-//     return localStorage.getItem('jwtToken');
-//   }
+  getToken(): string | null {
+    return localStorage.getItem('jwtToken');
+  }
 
-//   logout(): void {
-//     localStorage.removeItem('jwtToken');
-//   }
+  logout(): void {
+    localStorage.removeItem('jwtToken');
+  }
 
-//   isAuthenticated(): boolean {
-//     return !!this.getToken();
-//   }
-// }
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+}

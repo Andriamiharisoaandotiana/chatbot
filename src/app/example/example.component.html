@@ -1,20 +1,25 @@
 <div class=" chat-container h-[85vh] flex flex-col bg-slate-200 from-indigo-500 via-purple-500 to-blue-500" >
   <!-- Chat Header -->
   <div class="chat-header bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 shadow-lg">
-    <h2 class="text-lg font-bold">Comment puis-je vous aider ?</h2>
+    <h2 class="text-lg font-bold">Bonjour, comment puis-je vous aider ?</h2>
   </div>
 
   <!-- Chat Box -->
   <div class="chat-box flex-1 overflow-y-auto p-6 space-y-4 h-96" #chatContainer>
     <div *ngFor="let item of data; let i = index" class="chat-message" [class.user]="item.sender === 'user'">
       <!-- User Message -->
-      <div class="message user-message bg-gradient-to-r from-blue-500 to-purple-500 text-white p-4 rounded-3xl shadow-lg max-w-md ml-auto">
-        <p class="text-sm">{{ item.message }}</p>
+      <div class="ps-[20%]">
+        <div class="message user-message bg-gradient-to-r from-blue-500 to-purple-500 text-white p-4 rounded-3xl shadow-lg w-fit ml-auto">
+          <p class="text-sm">{{ item.message }}</p>
+        </div>
       </div>
+      
       <!-- Bot Message -->
       <br>
-      <div class="message bot-message bg-gray-100 text-gray-800 p-4 rounded-3xl shadow-lg max-w-md">
-        <p class="text-sm">{{ item.response }}</p>
+      <div class="pe-[20%]">
+        <div class="message bot-message bg-gray-100 text-gray-800 p-4 rounded-3xl shadow-lg w-fit">
+          <p class="text-sm">{{ item.response }}</p>
+        </div>
       </div>
     </div>
   </div>

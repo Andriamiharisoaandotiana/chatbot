@@ -20,11 +20,11 @@ export class ApiService {
     );
     return this.axiosInstance
       .get(endpoint)
-      .then((response) => {
+      .then((response: any) => {
         console.log('Response received:', response);
         return response.data;
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.error('Erreur lors de la récupération des données get ', error);
         throw error;
       });
@@ -33,13 +33,35 @@ export class ApiService {
   postData(endpoint: string, data: any) {
     return this.axiosInstance
       .post(endpoint, data)
-      .then((response) => {
+      .then((response: any) => {
         console.log('Response received:', response);
         return response.data;
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.error('Erreur lors de la récupération des données post', error);
         throw error;
       });
   }
+
+  postVoice(file: any) {
+    const formData = new FormData();
+    formData.append('audio', file); // Assurez-vous que le serveur attend un champ "file"
+  
+    return this.axiosInstance
+      .post("http://127.0.0.1:5000/voice_chat", file, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      .then((response: any) => {
+        console.log('Response received:', response);
+        return response.data;
+      })
+      .catch((error: any) => {
+        console.error('Erreur lors de l’envoi du fichier audio', error);
+        throw error;
+      });
+  }
+  
+  
 }
